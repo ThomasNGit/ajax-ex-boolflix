@@ -6,6 +6,8 @@ $(".user-search").click(function(){ //funzione che al click esegue una ricerca
 
     console.log(userInput); //debug
 
+
+
     $.ajax({
 
         url : "https://api.themoviedb.org/3/movie/550?api_key=4592ff2ae6081cad0b67fb362589cc1a",
@@ -14,8 +16,11 @@ $(".user-search").click(function(){ //funzione che al click esegue una ricerca
 
         success : function(data) {
 
-            console.log(data.response);          
+            var itemResponse = data.title;
 
+            console.log(itemResponse);
+
+            
         },
         error : function(){
 
@@ -27,9 +32,8 @@ $(".user-search").click(function(){ //funzione che al click esegue una ricerca
 
     $(".user-input").val("")//ripulisco l'inputfield
     
+
+
 })
-
-
-
 
 })
