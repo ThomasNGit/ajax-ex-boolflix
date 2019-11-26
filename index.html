@@ -9,33 +9,34 @@
 </head>
 
 <body>
-<header>
-    <img class="logo" src="https://fontmeme.com/permalink/191126/c2afbefb193becb208cc4f7dcf0a14da.png" alt="Logo">
-    <div class="search-area">
-        <input class="user-input" type="text"><a class="user-search" href="#"><i class="fas fa-search"></i></a>
-    </div>
-</header>
-    
-
-    <div id=films-container>
-        <div id="films">
-
+    <div id="general-container">
+    <header>
+        <img class="logo" src="https://fontmeme.com/permalink/191126/c2afbefb193becb208cc4f7dcf0a14da.png" alt="Logo">
+        <div class="search-area">
+            <input class="user-input" type="text"><a class="user-search" href="#"><i class="fas fa-search"></i></a>
         </div>
-    </div>
+    </header>
+
+        <div id=films-container>
+            <div id="films">
+
+            </div>
+        </div>
 
 
 
-    <!-- handlebars -->
-    <script id="movie-template" type="text/x-handlebars-template">
-    <div class="film-list">
-        <ul>
-            <li><span class="prop">{{{ poster }}}</span></li>
-            <li><span class="title">Titolo: </span><span class="prop">{{ titolo }}</span></li>
-            <li><span class="title">Titolo originale: </span><span class="prop">{{ titolo_orig }}</span></li>
-            <li><span class="title">Lingua originale: </span><span class="prop">{{ lingua }}</span><img src="{{{ paese }}}" alt="{{{ country }}}"></li>
-            <li><span class="title">Valutazione: </span><span class="prop">{{ valutazione }}</span><span class="star">{{{ stelle }}}</span></li>
-        </ul>
-    </div>
+        <!-- handlebars -->
+        <script id="movie-template" type="text/x-handlebars-template">
+        <div class="film-list">
+            <ul>
+                <li><img class ="filmimg" src="https://image.tmdb.org/t/p/original{{posterFilm}}" alt="poster"></li>
+                <li><span class="title">Titolo: </span><span class="prop">{{ titolo }}</span></li>
+                <li><span class="title">Titolo originale: </span><span class="prop">{{ titolo_orig }}</span></li>
+                <li><span class="title">Lingua originale: </span><span class="prop">{{{ lingua }}}</span></li>
+                <li><span class="title">Valutazione: </span><span class="prop">{{ valutazione }}</span><span class="star">{{{ stelle }}}</span></li>
+            </ul>
+        </div>
+</div>
 </script>
 <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

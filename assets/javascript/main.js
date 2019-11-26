@@ -79,21 +79,14 @@ function stampa(films){
         } else if(votoInt <= 10){
             stelle = " <i class='fas fa-star stella'></i><i class='fas fa-star stella'></i><i class='fas fa-star stella'></i><i class='fas fa-star stella'></i><i class='fas fa-star stella'></i>";
         }
-        
-        var paese ="";
 
-        if (film.original_language == "en"){
-            paese = ' us.png';
-        } else if (film.original_language == "it"){
-            paese = ' it.png';
-        }
+        var paese = film.original_language;       
 
         var context = {
-            poster : film.poster_path,
+            posterFilm : film.backdrop_path,
             titolo : film.title,
             titolo_orig : film.original_title,
-            lingua : film.original_language,
-            paese : paese,
+            lingua : linguaFilm(paese),
             valutazione : film.vote_average,
             stelle : stelle
         };
@@ -103,4 +96,32 @@ function stampa(films){
         var html = template(context);
         listaFilm.append(html);
     }
+}
+
+
+function linguaFilm(band) {
+    var flag = '';
+    switch (band) {
+        case "en":
+            flag = '<img src="assets/img/us.png">';
+            break;
+        case "uk":
+            flag = '<img src="assets/img/uk.png">';
+            break;
+        case "it":
+            flag = '<img src="assets/img/it.png">';
+            break;
+        case "fr":
+            flag = '<img src="assets/img/fr.png">';
+            break;
+        case "ja":
+            flag = '<img src="assets/img/jp.png">';
+            break;
+        case "cn":
+            flag = '<img src="assets/img/cn.png">';
+            break;
+        default:
+            flag = ' Nessuna lingua disponibile';
+    }
+    return flag;
 }
