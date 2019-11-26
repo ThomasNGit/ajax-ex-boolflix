@@ -32,6 +32,8 @@ function ajaxCall(){
                 var films = data.results;
 
                 stampa(films);
+
+                inputReset();
                     
             },
             error : function(richiesta, stato, errori){

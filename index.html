@@ -13,7 +13,7 @@
     <header>
         <img class="logo" src="https://fontmeme.com/permalink/191126/c2afbefb193becb208cc4f7dcf0a14da.png" alt="Logo">
         <div class="search-area">
-            <input class="user-input" type="text"><a class="user-search" href="#"><i class="fas fa-search"></i></a>
+            <input class="user-input" type="text" placeholder="Cerca un film..."><a class="user-search" href="#"><i class="fas fa-search"></i></a>
         </div>
     </header>
 
@@ -36,6 +36,17 @@
                 <li><span class="title">Valutazione: </span><span class="prop">{{ valutazione }}</span><span class="star">{{{ stelle }}}</span></li>
             </ul>
         </div>
+
+        <script id="tvseries-template" type="text/x-handlebars-template">
+            <div class="series-list">
+                <ul>
+                    <li><img class ="serieimg" src="https://image.tmdb.org/t/p/original{{posterSerie}}" alt="poster"></li>
+                    <li><span class="title">Titolo: </span><span class="prop">{{ titolo }}</span></li>
+                    <li><span class="title">Titolo originale: </span><span class="prop">{{ titolo_orig }}</span></li>
+                    <li><span class="title">Lingua originale: </span><span class="prop">{{{ lingua }}}</span></li>
+                    <li><span class="title">Valutazione: </span><span class="prop">{{ valutazione }}</span><span class="star">{{{ stelle }}}</span></li>
+                </ul>
+            </div>
 </div>
 </script>
 <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
