@@ -29,6 +29,8 @@ function ajaxCall(){
 
                 console.log(data);
                
+                var films = data.results;
+
                 stampa(films);
                     
             },
@@ -50,7 +52,7 @@ function inputReset(){
 function stampa(films){
 
     var listaFilm = $("#films");
-    listaFilm.html("");
+    listaFilm.html(" ");
 
     var source = $("#movie-template").html();
     var template = Handlebars.compile(source);
@@ -64,7 +66,7 @@ function stampa(films){
             titolo : film.title,
             titolo_orig : film.original_title,
             lingua : film.original_language,
-            valutazione : vote_average
+            valutazione : film.vote_average
 
         }
 

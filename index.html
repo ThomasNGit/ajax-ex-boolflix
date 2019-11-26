@@ -6,18 +6,8 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/all.css">
     <title>Boolflix</title>
-    <!-- handlebars -->
-    <script id="movie-template" type="text/x-handlebars-template">
-        <div class="film">
-            <ul>
-                <li><span class="title">Titolo: </span><span class="info">{{ titolo }}</span></li>
-                <li><span class="title">Titolo originale: </span><span class="info">{{ titolo_orig }}</span></li>
-                <li><span class="title">Lingua originale</span><span class="info">{{ lingua }}</span></li>
-                <li><span class="title">Valutazione</span><span class="info">{{ valutazione }}</span></li>
-            </ul>
-        </div>
-    </script>
 </head>
+
 <body>
 <header>
     <input class="user-input" type="text"><a class="user-search" href="#"><i class="fas fa-search"></i></a>
@@ -32,7 +22,17 @@
 
 
 
-
+    <!-- handlebars -->
+    <script id="movie-template" type="text/x-handlebars-template">
+    <div class="film-list">
+        <ul>
+            <li><span class="title">Titolo: </span><span class="prop">{{ titolo }}</span></li>
+            <li><span class="title">Titolo originale: </span><span class="prop">{{ titolo_orig }}</span></li>
+            <li><span class="title">Lingua originale</span><span class="prop">{{ lingua }}</span></li>
+            <li><span class="title">Valutazione</span><span class="prop">{{ valutazione }}</span></li>
+        </ul>
+    </div>
+</script>
 <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="assets/javascript/main.js"></script>
