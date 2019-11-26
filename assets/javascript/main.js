@@ -14,47 +14,61 @@ function ajaxCall(){
     
         $.ajax({ //creo la chiamata Ajax
 
-            url : "https://api.themoviedb.org/3/search/movie?api_key=9a6350f5129ed4894bf272b898b287df&query=" + userInput,
+            url : "https://api.themoviedb.org/3/search/movie",
 
             method : "GET",
+
+            data : {
+
+                api_key : "9a6350f5129ed4894bf272b898b287df",
+                query : userInput,
+                language : "it-IT",
+            },
 
             success : function(data){
 
                 console.log(data);
-
-                var films = data.results //variabile che mi indica l'elenco dei film
-
-                console.log("I film nel database sono: " + films);
-
-                var filmItem;
-
-                var film = $(".result");
-
-                film.append('<div>Il film che hai cercato è : ' + userInput + '. Ecco i risultati della tua ricerca:</div>' + "<br>")
-
-                films.forEach(filmItem =>{
-                    console.log("Titolo: " + filmItem.title);
-                    film.append('<div>Titolo: ' + filmItem.title + '</div>');
-                    console.log("Titolo originale: " + filmItem.original_title);
-                    film.append('<div>Titolo originale: ' + filmItem.original_title + '</div>');
-                    console.log("Lingua originale: " + filmItem.original_language);
-                    film.append('<div>Lingua originale: ' + filmItem.original_language + '</div>');
-                    console.log("Valutazione: " + filmItem.vote_average);
-                    film.append('<div>Valutazione: ' + filmItem.vote_average + '</div>');
-                    console.log("---------");
-                    film.append('<div>-------------------</div>');
+               
+                stampa(films);
                     
-                })
-                
-                $(".user-input").val(""); //resetto l'input field
             },
             error : function(richiesta, stato, errori){
 
-                alert("E' avvenuto un errore. " + " " + richiesta + " " + stato + " " + errori);
+                alert("È avvenuto un errore. " + " " + richiesta + " " + stato + " " + errori);
 
             }
         })
-}
-
+    }
 
 })
+
+function inputReset(){
+
+    $(".user-input").val("");
+}
+
+function stampa(films){
+
+    var listaFilm = $("#films");
+    listaFilm.html("");
+
+    var source = $("#movie-template").html();
+    var template = Handlebars.compile(source);
+
+    for (var i=0; i<films.length;i++){
+        
+        var film = films[i];
+
+        var context = {
+
+            titolo : film.title,
+            titolo_orig : film.original_title,
+            lingua : film.original_language,
+            valutazione : vote_average
+
+        }
+
+        var html = template(context);
+        listaFilm.append(html);
+    }
+}
