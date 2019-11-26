@@ -66,7 +66,7 @@ function stampa(films){
         var votoInt = parseInt(voto);
         console.log(votoInt);
 
-        var stelle = 0;
+        var stelle;
 
         if(votoInt <= 2){
             stelle = " <i class='fas fa-star stella'></i>";
@@ -80,12 +80,21 @@ function stampa(films){
             stelle = " <i class='fas fa-star stella'></i><i class='fas fa-star stella'></i><i class='fas fa-star stella'></i><i class='fas fa-star stella'></i><i class='fas fa-star stella'></i>";
         }
         
-        var context = {
+        var paese ="";
 
+        if (film.original_language == "en"){
+            paese = ' us.png';
+        } else if (film.original_language == "it"){
+            paese = ' it.png';
+        }
+
+        var context = {
+            poster : film.poster_path,
             titolo : film.title,
             titolo_orig : film.original_title,
             lingua : film.original_language,
-            valutazione : votoInt,
+            paese : paese,
+            valutazione : film.vote_average,
             stelle : stelle
         };
 

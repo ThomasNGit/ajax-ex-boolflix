@@ -29,9 +29,10 @@
     <script id="movie-template" type="text/x-handlebars-template">
     <div class="film-list">
         <ul>
+            <li><span class="prop">{{{ poster }}}</span></li>
             <li><span class="title">Titolo: </span><span class="prop">{{ titolo }}</span></li>
             <li><span class="title">Titolo originale: </span><span class="prop">{{ titolo_orig }}</span></li>
-            <li><span class="title">Lingua originale: </span><span class="prop">{{ lingua }}</span></li>
+            <li><span class="title">Lingua originale: </span><span class="prop">{{ lingua }}</span><img src="{{{ paese }}}" alt="{{{ country }}}"></li>
             <li><span class="title">Valutazione: </span><span class="prop">{{ valutazione }}</span><span class="star">{{{ stelle }}}</span></li>
         </ul>
     </div>
