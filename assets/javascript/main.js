@@ -61,14 +61,35 @@ function stampa(films){
         
         var film = films[i];
 
+        var voto = films[i].vote_average;
+
+        var votoInt = parseInt(voto);
+        console.log(votoInt);
+
+        var stelle = 0;
+
+        if(votoInt <= 2){
+            stelle = " <i class='fas fa-star stella'></i>";
+        } else if(votoInt <= 4){
+            stelle = " <i class='fas fa-star stella'></i><i class='fas fa-star stella'></i>";
+        } else if(votoInt <= 6){
+            stelle = " <i class='fas fa-star stella'></i><i class='fas fa-star stella'></i><i class='fas fa-star stella'></i>";
+        } else if(votoInt <= 8){
+            stelle = " <i class='fas fa-star stella'></i><i class='fas fa-star stella'></i><i class='fas fa-star stella'></i><i class='fas fa-star stella'></i>";
+        } else if(votoInt <= 10){
+            stelle = " <i class='fas fa-star stella'></i><i class='fas fa-star stella'></i><i class='fas fa-star stella'></i><i class='fas fa-star stella'></i><i class='fas fa-star stella'></i>";
+        }
+        
         var context = {
 
             titolo : film.title,
             titolo_orig : film.original_title,
             lingua : film.original_language,
-            valutazione : film.vote_average
+            valutazione : votoInt,
+            stelle : stelle
+        };
 
-        }
+   
 
         var html = template(context);
         listaFilm.append(html);

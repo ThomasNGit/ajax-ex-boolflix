@@ -1,0 +1,28 @@
+/* regole generali di pagina */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style-type: none;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    height: 100px;
+}
+
+.search-area{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 50px;
+}
+
+ul {
+    margin-bottom: 100px;
+}
+
+li i{
+    color: #f9b011;
+}

@@ -10,7 +10,10 @@
 
 <body>
 <header>
-    <input class="user-input" type="text"><a class="user-search" href="#"><i class="fas fa-search"></i></a>
+    <img class="logo" src="https://fontmeme.com/permalink/191126/c2afbefb193becb208cc4f7dcf0a14da.png" alt="Logo">
+    <div class="search-area">
+        <input class="user-input" type="text"><a class="user-search" href="#"><i class="fas fa-search"></i></a>
+    </div>
 </header>
     
 
@@ -28,8 +31,8 @@
         <ul>
             <li><span class="title">Titolo: </span><span class="prop">{{ titolo }}</span></li>
             <li><span class="title">Titolo originale: </span><span class="prop">{{ titolo_orig }}</span></li>
-            <li><span class="title">Lingua originale</span><span class="prop">{{ lingua }}</span></li>
-            <li><span class="title">Valutazione</span><span class="prop">{{ valutazione }}</span></li>
+            <li><span class="title">Lingua originale: </span><span class="prop">{{ lingua }}</span></li>
+            <li><span class="title">Valutazione: </span><span class="prop">{{ valutazione }}</span><span class="star">{{{ stelle }}}</span></li>
         </ul>
     </div>
 </script>
