@@ -40,8 +40,8 @@ function print(type, elems) {
 	var template = Handlebars.compile(source);
 	for (var i=0;i<elems.length;i++) {
 		var elem = elems[i];
-		var title = (type == "movie" ? elem.title : elem.name);
-		var originalTitle = (type == "movie" ? elem.original_title : elem.original_name);
+		var titolo = (type == "movie" ? elem.title : elem.name);
+		var titoloOriginale = (type == "movie" ? elem.original_title : elem.original_name);
 		var poster = '';
 		if (elem.poster_path) {
 			var src = 'https://image.tmdb.org/t/p/w342/' + elem.poster_path;
@@ -51,8 +51,8 @@ function print(type, elems) {
             poster = "<img class= 'filmimg' src='" + noImg + "'>";
         }
 		var context = {
-			titolo: title,
-			TitoloOrig: originalTitle,
+			titolo: titolo,
+			titoloOrig: titoloOriginale,
 			lingua: flagLingua(elem.original_language),
             valutazione: elem.vote_average,
             star: stars(elem.vote_average),
