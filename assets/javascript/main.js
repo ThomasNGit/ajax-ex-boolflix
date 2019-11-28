@@ -1,5 +1,19 @@
 //copia di Netflix in stile Boolean(frontEnd)
 
+var start = $("#nome");
+
+start.click(function(){
+
+	$("#general-container").fadeIn(2000);
+	
+	$("#starter").hide()
+
+})
+
+
+
+
+
 $(document).ready(function() {
 	$("#user-search").click(search); //funzione che esegue al click la ricerca
 });
