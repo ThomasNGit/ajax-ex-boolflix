@@ -94,10 +94,12 @@ li i{
     color: #f9b011;
 }
 
+/* stile del box con la panoramica del film/serie */
 #info{
     display: none;
 }
 
+/* che compare all'hover sul film/serie corrispondente */
 .film-list:hover  #info{
     display: block;
     height: 100%;
