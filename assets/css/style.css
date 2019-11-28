@@ -22,6 +22,7 @@ header{
     width: 100%;
     background-color: #000;
     position: fixed;
+    z-index: 999;
 }
 
 /* logo */
@@ -71,6 +72,7 @@ header img{
     color: #fff;
     border: 1px solid #fff;
     box-shadow: 10px 10px 5px -4px #911818;
+    position: relative;
 }
 
 li {
@@ -90,4 +92,18 @@ li .title{
 
 li i{
     color: #f9b011;
+}
+
+#info{
+    display: none;
+}
+
+.film-list:hover  #info{
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top:0;
+    left:0;
+    background: rgba(0,0,0, 0.6);
 }

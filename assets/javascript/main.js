@@ -57,8 +57,11 @@ function print(type, elems) {
             valutazione: elem.vote_average,
             star: stars(elem.vote_average),
 			poster: poster,
-			type: type
-		};
+			type: type,
+			panoramica: elem.overview
+        };
+
+        
 		var html = template(context);
         if(type == "movie")
         Film.append(html);
@@ -87,6 +90,7 @@ function print(type, elems) {
 		}
 		return lang;
     }
+
     inputReset();
 
     function inputReset(){
