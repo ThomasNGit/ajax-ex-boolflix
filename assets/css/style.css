@@ -140,3 +140,44 @@ li i{
     background: rgba(0,0,0, 0.6);
     font-size: 14px;
 }
+
+
+/* stile footer */
+footer{
+    height: 100px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 999;
+    background-color: #000;
+    display: flex;
+    justify-content: space-between;
+}
+
+footer .credit{
+    width: 50%;
+}
+
+footer .credit h2{
+    color: #f9b00d;
+    font-size: 20px;
+    margin-left: 50px;
+    line-height: 100px;
+}
+
+footer .contatti{
+    width: 50%;
+}
+
+footer .contatti ul {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-end;
+}
+
+footer .contatti ul li{
+    margin-left: 70px;
+    margin-right: 90px;
+    line-height: 100px;
+    font-size: 20px;
+}
