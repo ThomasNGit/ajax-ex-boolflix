@@ -23,7 +23,9 @@ function getData(url, query, type) {
 			language: "it-IT"
 		},
 		success: function(data) {
-			var elements = data.results;
+            var elements = data.results;
+            console.log(elements);
+            
 			print(type, elements);
 		},
 		error: function(err) {
@@ -81,14 +83,15 @@ function print(type, elems) {
             'uk'
 		];
 		if (availableLangs.includes(lang)) {
-			return '<img src="../img/' + lang + '.png" alt="' + lang + '" class="lang">';
+			return '<img src="assets/img/' + lang + '.png" alt="' + lang + '" class="lang">';
 		}
 		return lang;
     }
     inputReset();
-}
 
     function inputReset(){
 
         $("#user-input").val("");
     }
+}
+
