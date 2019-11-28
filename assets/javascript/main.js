@@ -1,129 +1,94 @@
-$( document ).ready(function(){
-
-var cerca = $(".user-search");
-
-cerca.click(ajaxCall);
-
-function ajaxCall(){
-
-    console.clear() //pulisco la console a ogni click
-
-    var userInput = $(".user-input").val(); //variabile che determina il valore dell'input dell'utente
-
-    console.log(userInput);
-    
-        $.ajax({ //creo la chiamata Ajax
-
-            url : "https://api.themoviedb.org/3/search/movie",
-
-            method : "GET",
-
-            data : {
-
-                api_key : "9a6350f5129ed4894bf272b898b287df",
-                query : userInput,
-                language : "it-IT",
-            },
-
-            success : function(data){
-
-                console.log(data);
-               
-                var films = data.results;
-
-                stampa(films);
-
-                inputReset();
-                    
-            },
-            error : function(richiesta, stato, errori){
-
-                alert("È avvenuto un errore. " + " " + richiesta + " " + stato + " " + errori);
-
-            }
-        })
-    }
-
-})
-
-function inputReset(){
-
-    $(".user-input").val("");
+$(document).ready(function() {
+	$("#user-search").click(search);
+});
+function reset() {
+	$(".elementi").html('');
 }
-
-function stampa(films){
-
-    var listaFilm = $("#films");
-    listaFilm.html(" ");
-
-    var source = $("#movie-template").html();
-    var template = Handlebars.compile(source);
-
-    for (var i=0; i<films.length;i++){
-        
-        var film = films[i];
-
-        var voto = films[i].vote_average;
-
-        var votoInt = parseInt(voto);
-        console.log(votoInt);
-
-        var stelle;
-
-        if(votoInt <= 2){
-            stelle = " <i class='fas fa-star stella'></i>";
-        } else if(votoInt <= 4){
-            stelle = " <i class='fas fa-star stella'></i><i class='fas fa-star stella'></i>";
-        } else if(votoInt <= 6){
-            stelle = " <i class='fas fa-star stella'></i><i class='fas fa-star stella'></i><i class='fas fa-star stella'></i>";
-        } else if(votoInt <= 8){
-            stelle = " <i class='fas fa-star stella'></i><i class='fas fa-star stella'></i><i class='fas fa-star stella'></i><i class='fas fa-star stella'></i>";
-        } else if(votoInt <= 10){
-            stelle = " <i class='fas fa-star stella'></i><i class='fas fa-star stella'></i><i class='fas fa-star stella'></i><i class='fas fa-star stella'></i><i class='fas fa-star stella'></i>";
+function search() {
+	reset();
+	var urlMovie = 'https://api.themoviedb.org/3/search/movie';
+	var urlTv = 'https://api.themoviedb.org/3/search/tv';
+	var ricerca = $("#user-input").val();
+	getData(urlMovie, ricerca, 'movie');
+	getData(urlTv, ricerca, 'tv');
+}
+function getData(url, query, type) {
+	var apiKey = '9a6350f5129ed4894bf272b898b287df';
+	$.ajax({
+		url: url,
+		method: "GET",
+		data: {
+			api_key: apiKey,
+			query: query,
+			language: "it-IT"
+		},
+		success: function(data) {
+			var elements = data.results;
+			print(type, elements);
+		},
+		error: function(err) {
+			console.log(err);
+		}
+	});
+}
+function print(type, elems) {
+    var Film = $("#films");
+    var serieTV = $("#serie-tv");
+	var source = $("#elem-template").html();
+	var template = Handlebars.compile(source);
+	for (var i=0;i<elems.length;i++) {
+		var elem = elems[i];
+		var title = (type == "movie" ? elem.title : elem.name);
+		var originalTitle = (type == "movie" ? elem.original_title : elem.original_name);
+		var poster = '';
+		if (elem.poster_path) {
+			var src = 'https://image.tmdb.org/t/p/w342/' + elem.poster_path;
+			poster = "<img class= 'filmimg' src='" + src + "'>";
+		} else {
+            var noImg = 'https://a.wattpad.com/cover/128474680-352-k398092.jpg'
+            poster = "<img class= 'filmimg' src='" + noImg + "'>";
         }
-
-        var paese = film.original_language;       
-
-        var context = {
-            posterFilm : film.backdrop_path,
-            titolo : film.title,
-            titolo_orig : film.original_title,
-            lingua : linguaFilm(paese),
-            valutazione : film.vote_average,
-            stelle : stelle
-        };
-
-   
-
-        var html = template(context);
-        listaFilm.append(html);
+		var context = {
+			titolo: title,
+			TitoloOrig: originalTitle,
+			lingua: flagLingua(elem.original_language),
+            valutazione: elem.vote_average,
+            star: stars(elem.vote_average),
+			poster: poster,
+			type: type
+		};
+		var html = template(context);
+        if(type == "movie")
+        Film.append(html);
+        else {
+            serieTV.append(html);
+        }
+	}
+	function stars(vote) {
+		vote = Math.floor(vote / 2);
+		var stars = '';
+		for (var i = 1; i <= 5; i++)
+	    stars += i <= vote ? '<i class="fas fa-star"></i>' : '<i class="far fa-star"></i>';
+		return stars;
+	}
+	function flagLingua(lang) {
+		var availableLangs = [
+			'en',
+            'ja',
+            'it',
+            'cn',
+            'fr',
+            'uk'
+		];
+		if (availableLangs.includes(lang)) {
+			return '<img src="../img/' + lang + '.png" alt="' + lang + '" class="lang">';
+		}
+		return lang;
     }
+    inputReset();
 }
 
+    function inputReset(){
 
-function linguaFilm(band) {
-    var flag = '';
-    switch (band) {
-        case "en":
-            flag = '<img src="assets/img/us.png">';
-            break;
-        case "uk":
-            flag = '<img src="assets/img/uk.png">';
-            break;
-        case "it":
-            flag = '<img src="assets/img/it.png">';
-            break;
-        case "fr":
-            flag = '<img src="assets/img/fr.png">';
-            break;
-        case "ja":
-            flag = '<img src="assets/img/jp.png">';
-            break;
-        case "cn":
-            flag = '<img src="assets/img/cn.png">';
-            break;
-        default:
-            flag = ' Nessuna lingua disponibile';
+        $("#user-input").val("");
     }
-    return flag;
-}

@@ -19,7 +19,9 @@ header{
     display: flex;
     justify-content: space-between;
     height: 100px;
+    width: 100%;
     background-color: #000;
+    position: fixed;
 }
 
 /* logo */
@@ -54,7 +56,8 @@ header img{
 }
 
 /* stile contenitore dei film */
-#films{
+.elementi{
+    margin-top: 100px;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
@@ -75,7 +78,9 @@ li {
 }
 
 li .filmimg{
-    height: 158px;
+    height: 350px;
+    margin-left: 10px;
+    box-shadow: 10px 10px 5px -4px #8e8686;
 }
 
 li .title{
