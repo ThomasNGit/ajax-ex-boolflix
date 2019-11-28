@@ -1,17 +1,24 @@
 //copia di Netflix in stile Boolean(frontEnd)
+var nomeUser = prompt("Come ti chiami?"); //chiedo all'user come si chiama
 
-var start = $("#nome");
+function letteraMaiusc(string) { //funzione per capitalizzare la prima lettera
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
 
-start.click(function(){
+nomeMaiusc = letteraMaiusc(nomeUser) //ritorno il nome con la prima lettera maiuscola
+
+$("#nome").append("<h2>Ciao, " + nomeMaiusc + "! Cosa vuoi vedere?</h2>") //e lo appendo
+
+
+var start =$("#nome");
+
+start.click(function(){ //funzione che al clic fa comparire la schermata di selezione film/serie
 
 	$("#general-container").fadeIn(2000);
 	
 	$("#starter").hide()
 
 })
-
-
-
 
 
 $(document).ready(function() {
